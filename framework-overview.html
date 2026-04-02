@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIA — Framework Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-mark">A</div>
+    <div>
+      <div class="logo-text">ARIA</div>
+      <div class="logo-sub">AI RISK & INTELLIGENCE ASSESSMENT</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <a href="ai-assessment-framework.html" class="header-link">ASSESSMENT</a>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle light/dark">☀︎ / ☾</button>
+    <div class="header-badge">ENTERPRISE EDITION v2.0</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow">FRAMEWORK OVERVIEW</div>
+  <h1>How ARIA evaluates AI risk and compliance</h1>
+  <p>This page explains what ARIA does, how the scoring works, and the formulas used to compute inherent risk, control effectiveness, and residual risk, aligned with modern AI governance practice.</p>
+</div>
+
+<div class="main">
+
+  <div class="section-card visible">
+    <div class="card-header">
+      <div class="card-header-icon">🧭</div>
+      <div class="card-header-text">
+        <h2>Scope and Inventory</h2>
+        <p>DEFINING ASSESSMENT BOUNDARY</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Assessment begins with profiling the AI application: use case, model type, autonomy level, affected users, decisions influenced, jurisdictions, deployment pattern, and data used. Context drives risk — not model quality alone. This aligns with NIST AI RMF focus on governance, mapping context, measuring risk, and managing controls with continuous monitoring.</p>
+    </div>
+  </div>
+
+  <div class="section-card visible">
+    <div class="card-header">
+      <div class="card-header-icon">🧮</div>
+      <div class="card-header-text">
+        <h2>Three-Layer Scoring Model</h2>
+        <p>INHERENT → CONTROLS → RESIDUAL</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <ol style="padding-left:1.2rem;line-height:1.8;">
+        <li><strong>Layer 1 — Inherent Risk:</strong> impact and likelihood before safeguards.</li>
+        <li><strong>Layer 2 — Control Effectiveness:</strong> maturity and coverage of safeguards.</li>
+        <li><strong>Layer 3 — Residual Risk & Compliance:</strong> what remains after mitigation.</li>
+      </ol>
+      <div class="narrative-block" style="margin-top:1rem;">
+        <div class="narrative-label">FORMULAE</div>
+        <div class="narrative-text" style="font-family:'DM Mono',monospace;">
+          Residual Risk = Inherent Risk × (1 − Control Effectiveness)<br>
+          Compliance Score = Σ(Requirement Weight × Control Pass Rate)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card visible">
+    <div class="card-header">
+      <div class="card-header-icon">🧱</div>
+      <div class="card-header-text">
+        <h2>Domains and Weights</h2>
+        <p>RULE FAMILIES CHECKED FOR EVERY AI APPLICATION</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul style="padding-left:1.2rem;line-height:1.8;">
+        <li><strong>Use‑case criticality (15%)</strong> — decision impact, autonomy, user harm.</li>
+        <li><strong>Data governance (15%)</strong> — consent, lineage, sensitivity, retention, data quality.</li>
+        <li><strong>Model performance (15%)</strong> — accuracy, drift, explainability, reproducibility.</li>
+        <li><strong>Fairness & ethics (15%)</strong> — bias, disparity, harmful content, contestability, transparency.</li>
+        <li><strong>Security (20%)</strong> — injection, poisoning, tampering, access control, dependencies, logging.</li>
+        <li><strong>Compliance governance (10%)</strong> — regulatory mapping, policies, approvals, audit trail.</li>
+        <li><strong>Monitoring & operations (10%)</strong> — incidents, fallback, alerts, retraining governance.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-card visible">
+    <div class="card-header">
+      <div class="card-header-icon">📏</div>
+      <div class="card-header-text">
+        <h2>Metric Scale</h2>
+        <p>CONSISTENT 1–5 SCORING</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul style="padding-left:1.2rem;line-height:1.8;">
+        <li><strong>1</strong> = Low risk / strong control / fully compliant</li>
+        <li><strong>3</strong> = Medium risk / partially controlled</li>
+        <li><strong>5</strong> = High risk / weak or missing control</li>
+      </ul>
+      <p style="margin-top:0.8rem;">Likelihood and impact drive <em>inherent risk</em>. Control maturity (coverage, quality, evidence) drives <em>control effectiveness</em>. Weighted aggregation produces the final <em>residual risk</em> and a <em>compliance score</em> for audit readiness.</p>
+    </div>
+  </div>
+
+  <div class="section-card visible">
+    <div class="card-header">
+      <div class="card-header-icon">⚖️</div>
+      <div class="card-header-text">
+        <h2>Decision Thresholds</h2>
+        <p>APPROVE, CONDITIONAL, REMEDIATE, OR REJECT</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul style="padding-left:1.2rem;line-height:1.8;">
+        <li><strong>0–25</strong>: Low residual risk — approve.</li>
+        <li><strong>26–50</strong>: Moderate risk — approve with documented controls.</li>
+        <li><strong>51–75</strong>: High risk — remediation required before deployment.</li>
+        <li><strong>76–100</strong>: Critical risk — reject or redesign.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-card visible">
+    <div class="card-header">
+      <div class="card-header-icon">🔁</div>
+      <div class="card-header-text">
+        <h2>Continuous Review</h2>
+        <p>PROGRAM, NOT ONE‑TIME GATE</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Reassess on model updates, data shifts, incidents, regulation changes, and periodic cycles. Store evidence in a compliance pack including policies, model cards, data sheets, test reports, approvals, and monitoring records for regulator‑ready audits.</p>
+    </div>
+  </div>
+
+  <div class="section-card visible">
+    <div class="card-header">
+      <div class="card-header-icon">ℹ️</div>
+      <div class="card-header-text">
+        <h2>Quick Summary</h2>
+        <p>WHAT IT DOES</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul style="padding-left:1.2rem;line-height:1.8;">
+        <li>Profiles the AI system and maps context (use case, autonomy, users, data, jurisdiction).</li>
+        <li>Evaluates eight rule families using measurable metrics on a 1–5 scale.</li>
+        <li>Aggregates scores with domain weights to compute inherent and residual risk.</li>
+        <li>Rates control effectiveness and produces a compliance score with evidence pointers.</li>
+        <li>Outputs a verdict and remediation roadmap, then supports continuous monitoring.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div style="max-width:1200px;margin:0 auto;padding:1rem 2rem;border-top:1px solid var(--border);color:#6b6b7a;font-size:0.7rem;line-height:1.6;">
+      Disclaimer: This framework provides structured guidance for internal risk management and does not constitute legal advice. Validate outcomes with appropriate domain experts before regulatory submissions.
+      <br>© 2026 Prateek Dutta. All rights reserved.
+    </div>
+  </footer>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-mark">A</div>
+    <div>
+      <div class="logo-text">ARIA</div>
+      <div class="logo-sub">AI RISK INTELLIGENCE ASSESSMENT</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <a href="framework-overview.html" class="header-link">FRAMEWORK</a>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle light/dark">☀︎ / ☾</button>
+    <div class="header-badge">ENTERPRISE EDITION</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow">ENTERPRISE GRID</div>
+  <h1>Assess your AI system's <em>risk</em> before it's too late.</h1>
+  <p>ARIA provides a structured, intelligent evaluation framework covering governance, security, fairness, and compliance — with a downloadable audit-ready report.</p>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="num">8</div><div class="label">RISK DOMAINS</div></div>
+    <div class="stat-item"><div class="num">65+</div><div class="label">CONTROL CHECKS</div></div>
+    <div class="stat-item"><div class="num">3</div><div class="label">SCORING LAYERS</div></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- Progress track -->
+  <div class="progress-track" id="progress-track">
+    <div class="track-step active" id="step-tab-0">
+      <span class="step-num">01</span>PROFILE
+    </div>
+    <div class="track-step" id="step-tab-1">
+      <span class="step-num">02</span>USE CASE
+    </div>
+    <div class="track-step" id="step-tab-2">
+      <span class="step-num">03</span>DATA
+    </div>
+    <div class="track-step" id="step-tab-3">
+      <span class="step-num">04</span>MODEL
+    </div>
+    <div class="track-step" id="step-tab-4">
+      <span class="step-num">05</span>SECURITY
+    </div>
+    <div class="track-step" id="step-tab-5">
+      <span class="step-num">06</span>FAIRNESS
+    </div>
+    <div class="track-step" id="step-tab-6">
+      <span class="step-num">07</span>GOVERNANCE
+    </div>
+    <div class="track-step" id="step-tab-7">
+      <span class="step-num">08</span>OPS
+    </div>
+  </div>
+
+  <!-- ══ STEP 0: APPLICATION PROFILE ══ -->
+  <div class="section-card visible" id="step-0">
+    <div class="card-header">
+      <div class="card-header-icon">🏢</div>
+      <div class="card-header-text">
+        <h2>Application Profile</h2>
+        <p>ESTABLISH ASSESSMENT BOUNDARY — PROVIDE CORE SYSTEM IDENTIFICATION DETAILS</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Application / Product Name <span class="req">*</span></label>
+          <input type="text" id="app_name" placeholder="e.g., CreditScore AI, HR Screening Bot…">
+        </div>
+        <div class="form-group">
+          <label>Organization / Client Name <span class="req">*</span></label>
+          <input type="text" id="org_name" placeholder="e.g., Deloitte, KPMG, Accenture…">
+        </div>
+        <div class="form-group">
+          <label>AI Function / Purpose <span class="req">*</span></label>
+          <select id="ai_function">
+            <option value="">— Select primary function —</option>
+            <option>Credit/Loan Scoring & Decisioning</option>
+            <option>HR Recruitment & Candidate Screening</option>
+            <option>Fraud Detection & Prevention</option>
+            <option>Customer Service / Chatbot / Virtual Agent</option>
+            <option>Medical Diagnosis & Clinical Decision Support</option>
+            <option>Legal Document Analysis & Contract Review</option>
+            <option>Predictive Analytics & Forecasting</option>
+            <option>Content Moderation & Policy Enforcement</option>
+            <option>Supply Chain Optimization</option>
+            <option>Cybersecurity Threat Detection</option>
+            <option>Marketing Personalization & Targeting</option>
+            <option>Regulatory Compliance Monitoring</option>
+            <option>Generative AI / LLM Application</option>
+            <option>Computer Vision / Image Recognition</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Model Type / Architecture <span class="req">*</span></label>
+          <select id="model_type">
+            <option value="">— Select model type —</option>
+            <option>Large Language Model (LLM) / GPT-based</option>
+            <option>Traditional ML (XGBoost, Random Forest, SVM)</option>
+            <option>Deep Learning / Neural Network</option>
+            <option>Computer Vision (CNN-based)</option>
+            <option>Ensemble Model</option>
+            <option>Rule-based + ML Hybrid</option>
+            <option>Reinforcement Learning</option>
+            <option>Time Series / Forecasting Model</option>
+            <option>Graph Neural Network</option>
+            <option>Multi-Modal AI</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Deployment Environment</label>
+          <select id="deployment">
+            <option>Cloud (Public) — AWS/Azure/GCP</option>
+            <option>Cloud (Private/VPC)</option>
+            <option>On-Premises / Air-gapped</option>
+            <option>Hybrid (Cloud + On-prem)</option>
+            <option>Edge / Embedded Device</option>
+            <option>SaaS Third-Party Platform</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Primary Jurisdiction / Geography</label>
+          <select id="jurisdiction">
+            <option>Global / Multi-jurisdiction</option>
+            <option>European Union (GDPR + EU AI Act)</option>
+            <option>United States (CCPA, NIST RMF)</option>
+            <option>United Kingdom (UK GDPR + ICO)</option>
+            <option>India (DPDP Act)</option>
+            <option>Australia (Privacy Act)</option>
+            <option>Middle East / GCC</option>
+            <option>APAC (Singapore PDPA, etc.)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section-divider">DEPLOYMENT SCALE</div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Estimated Users / Decisions Affected Monthly</label>
+          <select id="user_scale">
+            <option>Under 1,000</option>
+            <option>1,000 – 50,000</option>
+            <option>50,000 – 500,000</option>
+            <option>500,000 – 5 Million</option>
+            <option>Over 5 Million</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Deployment Phase</label>
+          <select id="deploy_phase">
+            <option>Pre-deployment (planning/design)</option>
+            <option>Development / Training</option>
+            <option>Pilot / Limited rollout</option>
+            <option>Production (live)</option>
+            <option>Legacy system (re-evaluation)</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Brief Description of the System <span class="req">*</span></label>
+          <textarea id="app_description" placeholder="Describe what the AI system does, the problem it solves, who uses it, what inputs it takes, and what outputs/decisions it produces…" style="min-height:110px;"></textarea>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <div></div>
+        <button class="btn btn-primary" onclick="goToStep(1)">Continue → USE CASE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ STEP 1: USE CASE & IMPACT ══ -->
+  <div class="section-card" id="step-1">
+    <div class="card-header">
+      <div class="card-header-icon">🎯</div>
+      <div class="card-header-text">
+        <h2>Use Case & Impact Assessment</h2>
+        <p>DOMAIN 1 OF 7 — BUSINESS CRITICALITY · DECISION IMPACT · AUTONOMY LEVEL</p>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>What is the degree of decision automation?</label>
+        <div class="mcq-group" data-field="decision_automation">
+          <label class="mcq-option"><input type="radio" name="decision_automation" value="1"><div class="mcq-dot"></div>Fully human-in-the-loop — AI only provides suggestions; humans make all decisions</label>
+          <label class="mcq-option"><input type="radio" name="decision_automation" value="2"><div class="mcq-dot"></div>Human-on-the-loop — AI decides, human monitors and can override in real time</label>
+          <label class="mcq-option"><input type="radio" name="decision_automation" value="3"><div class="mcq-dot"></div>Mixed — AI automates routine decisions; humans review edge cases</label>
+          <label class="mcq-option"><input type="radio" name="decision_automation" value="4"><div class="mcq-dot"></div>Mostly automated — humans review only escalated or high-risk decisions</label>
+          <label class="mcq-option"><input type="radio" name="decision_automation" value="5"><div class="mcq-dot"></div>Fully autonomous — AI makes all decisions with no human review</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>What is the potential harm if the AI makes a wrong decision?</label>
+        <div class="mcq-group" data-field="harm_level">
+          <label class="mcq-option"><input type="radio" name="harm_level" value="1"><div class="mcq-dot"></div>Minimal — inconvenience or minor financial impact, easily reversible</label>
+          <label class="mcq-option"><input type="radio" name="harm_level" value="2"><div class="mcq-dot"></div>Low — moderate financial/service impact, correctable within days</label>
+          <label class="mcq-option"><input type="radio" name="harm_level" value="3"><div class="mcq-dot"></div>Medium — significant financial, reputational, or operational harm</label>
+          <label class="mcq-option"><input type="radio" name="harm_level" value="4"><div class="mcq-dot"></div>High — legal rights, employment, healthcare, or credit decisions impacted</label>
+          <label class="mcq-option"><input type="radio" name="harm_level" value="5"><div class="mcq-dot"></div>Critical — safety of life, severe financial ruin, or irreversible rights violations</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Is there a clear, accessible appeals or override process for affected individuals?</label>
+        <div class="mcq-group" data-field="override_process">
+          <label class="mcq-option"><input type="radio" name="override_process" value="1"><div class="mcq-dot"></div>Yes — documented, accessible appeals process with SLA commitments</label>
+          <label class="mcq-option"><input type="radio" name="override_process" value="2"><div class="mcq-dot"></div>Yes — process exists but may not be well-documented or communicated</label>
+          <label class="mcq-option"><input type="radio" name="override_process" value="3"><div class="mcq-dot"></div>Partial — internal override exists but not available to affected parties</label>
+          <label class="mcq-option"><input type="radio" name="override_process" value="4"><div class="mcq-dot"></div>Limited — ad-hoc process only, no formal mechanism</label>
+          <label class="mcq-option"><input type="radio" name="override_process" value="5"><div class="mcq-dot"></div>None — no override or appeals mechanism exists</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Financial exposure from a single significant AI failure (estimate)</label>
+        <div class="mcq-group" data-field="financial_exposure">
+          <label class="mcq-option"><input type="radio" name="financial_exposure" value="1"><div class="mcq-dot"></div>Under $10K — minimal financial risk</label>
+          <label class="mcq-option"><input type="radio" name="financial_exposure" value="2"><div class="mcq-dot"></div>$10K – $500K — moderate financial risk</label>
+          <label class="mcq-option"><input type="radio" name="financial_exposure" value="3"><div class="mcq-dot"></div>$500K – $5M — significant financial risk</label>
+          <label class="mcq-option"><input type="radio" name="financial_exposure" value="4"><div class="mcq-dot"></div>$5M – $50M — high financial risk</label>
+          <label class="mcq-option"><input type="radio" name="financial_exposure" value="5"><div class="mcq-dot"></div>Over $50M — critical financial risk</label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-secondary" onclick="goToStep(0)">← Back</button>
+        <button class="btn btn-primary" onclick="goToStep(2)">Continue → DATA</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ STEP 2: DATA GOVERNANCE ══ -->
+  <div class="section-card" id="step-2">
+    <div class="card-header">
+      <div class="card-header-icon">🗄️</div>
+      <div class="card-header-text">
+        <h2>Data Governance</h2>
+        <p>DOMAIN 2 OF 7 — DATA QUALITY · CONSENT · LINEAGE · SENSITIVITY</p>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>What types of data does the system process? (Select all that apply)</label>
+        <div class="checkbox-group" data-field="data_types">
+          <label class="check-option"><input type="checkbox" value="pii"><div class="check-box"></div>Personally Identifiable Information (PII) — name, email, ID numbers</label>
+          <label class="check-option"><input type="checkbox" value="sensitive"><div class="check-box"></div>Sensitive Personal Data — health, biometric, ethnicity, religion, political views</label>
+          <label class="check-option"><input type="checkbox" value="financial"><div class="check-box"></div>Financial Data — banking, credit, transaction records</label>
+          <label class="check-option"><input type="checkbox" value="behavioral"><div class="check-box"></div>Behavioral / Usage Data — browsing, location, activity logs</label>
+          <label class="check-option"><input type="checkbox" value="third_party"><div class="check-box"></div>Third-Party / Purchased Data — external data providers or brokers</label>
+          <label class="check-option"><input type="checkbox" value="public"><div class="check-box"></div>Publicly Available Data only — open datasets, web scraping</label>
+          <label class="check-option"><input type="checkbox" value="synthetic"><div class="check-box"></div>Synthetic / Anonymized Data</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>What is the state of data consent and legal basis?</label>
+        <div class="mcq-group" data-field="data_consent">
+          <label class="mcq-option"><input type="radio" name="data_consent" value="1"><div class="mcq-dot"></div>Full compliance — explicit consent obtained, legal basis documented for all data uses</label>
+          <label class="mcq-option"><input type="radio" name="data_consent" value="2"><div class="mcq-dot"></div>Mostly compliant — consent for primary use cases, minor gaps in edge cases</label>
+          <label class="mcq-option"><input type="radio" name="data_consent" value="3"><div class="mcq-dot"></div>Partial — consent for some data, legitimate interest claimed for others without full assessment</label>
+          <label class="mcq-option"><input type="radio" name="data_consent" value="4"><div class="mcq-dot"></div>Limited — consent not systematically obtained; relying on implied consent</label>
+          <label class="mcq-option"><input type="radio" name="data_consent" value="5"><div class="mcq-dot"></div>Unknown / None — legal basis not established or data consent not tracked</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>How would you rate the overall data quality (completeness, accuracy, freshness)?</label>
+        <div class="slider-wrap" data-field="data_quality_slider">
+          <div class="slider-row">
+            <input type="range" id="data_quality" min="1" max="5" value="3" oninput="document.getElementById('dq_val').textContent=this.value">
+            <div class="slider-val" id="dq_val">3</div>
+          </div>
+          <div class="slider-labels"><span>VERY POOR</span><span>POOR</span><span>MODERATE</span><span>GOOD</span><span>EXCELLENT</span></div>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Is data lineage and provenance tracked end-to-end?</label>
+        <div class="mcq-group" data-field="data_lineage">
+          <label class="mcq-option"><input type="radio" name="data_lineage" value="1"><div class="mcq-dot"></div>Full lineage — automated tracking from source to model; documented in data catalog</label>
+          <label class="mcq-option"><input type="radio" name="data_lineage" value="2"><div class="mcq-dot"></div>Mostly tracked — lineage documented for critical datasets; gaps in derived features</label>
+          <label class="mcq-option"><input type="radio" name="data_lineage" value="3"><div class="mcq-dot"></div>Partial — some documentation but incomplete or manually maintained</label>
+          <label class="mcq-option"><input type="radio" name="data_lineage" value="4"><div class="mcq-dot"></div>Minimal — source known, but transformation history not fully captured</label>
+          <label class="mcq-option"><input type="radio" name="data_lineage" value="5"><div class="mcq-dot"></div>None — no lineage tracking; origin of training data unknown for some portions</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Are data retention and deletion policies enforced?</label>
+        <div class="mcq-group" data-field="data_retention">
+          <label class="mcq-option"><input type="radio" name="data_retention" value="1"><div class="mcq-dot"></div>Yes — automated enforcement with audit logs and right-to-erasure capabilities</label>
+          <label class="mcq-option"><input type="radio" name="data_retention" value="3"><div class="mcq-dot"></div>Partial — policies defined but enforcement is manual or inconsistent</label>
+          <label class="mcq-option"><input type="radio" name="data_retention" value="5"><div class="mcq-dot"></div>No — no defined retention policies or enforcement mechanisms in place</label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-secondary" onclick="goToStep(1)">← Back</button>
+        <button class="btn btn-primary" onclick="goToStep(3)">Continue → MODEL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ STEP 3: MODEL RISK ══ -->
+  <div class="section-card" id="step-3">
+    <div class="card-header">
+      <div class="card-header-icon">🤖</div>
+      <div class="card-header-text">
+        <h2>Model Risk & Performance</h2>
+        <p>DOMAIN 3 OF 7 — ACCURACY · DRIFT · EXPLAINABILITY · LIFECYCLE</p>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>How well is model performance characterized and documented?</label>
+        <div class="mcq-group" data-field="model_performance">
+          <label class="mcq-option"><input type="radio" name="model_performance" value="1"><div class="mcq-dot"></div>Comprehensive — precision, recall, F1, AUC, calibration tested across multiple subgroups</label>
+          <label class="mcq-option"><input type="radio" name="model_performance" value="2"><div class="mcq-dot"></div>Good — standard metrics tracked, some subgroup analysis performed</label>
+          <label class="mcq-option"><input type="radio" name="model_performance" value="3"><div class="mcq-dot"></div>Moderate — basic accuracy metrics only, limited subgroup testing</label>
+          <label class="mcq-option"><input type="radio" name="model_performance" value="4"><div class="mcq-dot"></div>Limited — performance tested on overall dataset only, no failure mode analysis</label>
+          <label class="mcq-option"><input type="radio" name="model_performance" value="5"><div class="mcq-dot"></div>Unknown — model performance not formally evaluated or documented</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Is model drift monitored in production?</label>
+        <div class="mcq-group" data-field="model_drift">
+          <label class="mcq-option"><input type="radio" name="model_drift" value="1"><div class="mcq-dot"></div>Yes — automated drift detection with alerting and retraining triggers defined</label>
+          <label class="mcq-option"><input type="radio" name="model_drift" value="2"><div class="mcq-dot"></div>Yes — periodic manual evaluation (monthly or quarterly)</label>
+          <label class="mcq-option"><input type="radio" name="model_drift" value="3"><div class="mcq-dot"></div>Partial — some monitoring but no formal drift thresholds or response process</label>
+          <label class="mcq-option"><input type="radio" name="model_drift" value="5"><div class="mcq-dot"></div>No — model deployed and not monitored for performance degradation</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Is the model explainable to end users and regulators?</label>
+        <div class="mcq-group" data-field="explainability">
+          <label class="mcq-option"><input type="radio" name="explainability" value="1"><div class="mcq-dot"></div>Fully explainable — SHAP/LIME or intrinsic explainability; plain-language explanations available</label>
+          <label class="mcq-option"><input type="radio" name="explainability" value="2"><div class="mcq-dot"></div>Partially explainable — technical explanations available; end-user explanations limited</label>
+          <label class="mcq-option"><input type="radio" name="explainability" value="3"><div class="mcq-dot"></div>Black box with post-hoc tools — SHAP applied but not integrated into decisions</label>
+          <label class="mcq-option"><input type="radio" name="explainability" value="4"><div class="mcq-dot"></div>Minimal — general description only; no feature-level explanations</label>
+          <label class="mcq-option"><input type="radio" name="explainability" value="5"><div class="mcq-dot"></div>None — completely opaque model; cannot explain outputs</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Is there a model registry and version control?</label>
+        <div class="mcq-group" data-field="model_registry">
+          <label class="mcq-option"><input type="radio" name="model_registry" value="1"><div class="mcq-dot"></div>Yes — formal registry with versioning, metadata, test results, and rollback capability</label>
+          <label class="mcq-option"><input type="radio" name="model_registry" value="2"><div class="mcq-dot"></div>Yes — version control exists; limited metadata and test result documentation</label>
+          <label class="mcq-option"><input type="radio" name="model_registry" value="3"><div class="mcq-dot"></div>Partial — files versioned in source control but no formal model registry</label>
+          <label class="mcq-option"><input type="radio" name="model_registry" value="5"><div class="mcq-dot"></div>No — no version control; current model state unknown or undocumented</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>If it is an LLM/generative AI, is hallucination risk assessed and mitigated?</label>
+        <div class="mcq-group" data-field="hallucination">
+          <label class="mcq-option"><input type="radio" name="hallucination" value="1"><div class="mcq-dot"></div>N/A — not a generative AI system</label>
+          <label class="mcq-option"><input type="radio" name="hallucination" value="2"><div class="mcq-dot"></div>Yes — RAG or grounding used; output validation and human review in place</label>
+          <label class="mcq-option"><input type="radio" name="hallucination" value="3"><div class="mcq-dot"></div>Partial — some guardrails in place but not comprehensive</label>
+          <label class="mcq-option"><input type="radio" name="hallucination" value="5"><div class="mcq-dot"></div>No — hallucination risk unaddressed in a generative AI system</label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-secondary" onclick="goToStep(2)">← Back</button>
+        <button class="btn btn-primary" onclick="goToStep(4)">Continue → SECURITY</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ STEP 4: SECURITY ══ -->
+  <div class="section-card" id="step-4">
+    <div class="card-header">
+      <div class="card-header-icon">🔐</div>
+      <div class="card-header-text">
+        <h2>Security & Adversarial Resilience</h2>
+        <p>DOMAIN 4 OF 7 — INJECTION · POISONING · ACCESS CONTROL · SUPPLY CHAIN</p>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Has the system been tested against adversarial attacks (prompt injection, evasion, poisoning)?</label>
+        <div class="mcq-group" data-field="adversarial_testing">
+          <label class="mcq-option"><input type="radio" name="adversarial_testing" value="1"><div class="mcq-dot"></div>Yes — red teaming, adversarial robustness testing, and penetration testing completed</label>
+          <label class="mcq-option"><input type="radio" name="adversarial_testing" value="2"><div class="mcq-dot"></div>Partial — some adversarial testing done; not comprehensive across all threat vectors</label>
+          <label class="mcq-option"><input type="radio" name="adversarial_testing" value="3"><div class="mcq-dot"></div>Limited — standard security testing only, no AI-specific adversarial testing</label>
+          <label class="mcq-option"><input type="radio" name="adversarial_testing" value="5"><div class="mcq-dot"></div>No — no adversarial or AI-specific security testing performed</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>How is access to the model and training data controlled?</label>
+        <div class="mcq-group" data-field="access_control">
+          <label class="mcq-option"><input type="radio" name="access_control" value="1"><div class="mcq-dot"></div>Strong — RBAC/ABAC, MFA, least-privilege enforced; all access logged and reviewed</label>
+          <label class="mcq-option"><input type="radio" name="access_control" value="2"><div class="mcq-dot"></div>Good — role-based access with authentication; logging in place but reviews are infrequent</label>
+          <label class="mcq-option"><input type="radio" name="access_control" value="3"><div class="mcq-dot"></div>Moderate — basic access controls; some privileged access without formal controls</label>
+          <label class="mcq-option"><input type="radio" name="access_control" value="4"><div class="mcq-dot"></div>Weak — shared credentials or overly broad access permissions</label>
+          <label class="mcq-option"><input type="radio" name="access_control" value="5"><div class="mcq-dot"></div>None — no formal access control; model and data openly accessible internally</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Are AI supply chain dependencies (third-party models, libraries, APIs) managed?</label>
+        <div class="mcq-group" data-field="supply_chain">
+          <label class="mcq-option"><input type="radio" name="supply_chain" value="1"><div class="mcq-dot"></div>Yes — AI Bill of Materials (AI-BOM) maintained; vendor risk assessments completed</label>
+          <label class="mcq-option"><input type="radio" name="supply_chain" value="2"><div class="mcq-dot"></div>Partial — dependency inventory exists; vendor assessments incomplete</label>
+          <label class="mcq-option"><input type="radio" name="supply_chain" value="3"><div class="mcq-dot"></div>Limited — general software inventory but no AI-specific dependency tracking</label>
+          <label class="mcq-option"><input type="radio" name="supply_chain" value="5"><div class="mcq-dot"></div>None — third-party AI dependencies untracked or unvetted</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Are model artifacts (weights, checkpoints) protected against tampering?</label>
+        <div class="mcq-group" data-field="model_integrity">
+          <label class="mcq-option"><input type="radio" name="model_integrity" value="1"><div class="mcq-dot"></div>Yes — cryptographic signing, hash verification, and integrity checks on deployment</label>
+          <label class="mcq-option"><input type="radio" name="model_integrity" value="3"><div class="mcq-dot"></div>Partial — access controls in place but no formal integrity verification</label>
+          <label class="mcq-option"><input type="radio" name="model_integrity" value="5"><div class="mcq-dot"></div>No — model artifacts stored without integrity protection mechanisms</label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-secondary" onclick="goToStep(3)">← Back</button>
+        <button class="btn btn-primary" onclick="goToStep(5)">Continue → FAIRNESS</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ STEP 5: FAIRNESS & ETHICS ══ -->
+  <div class="section-card" id="step-5">
+    <div class="card-header">
+      <div class="card-header-icon">⚖️</div>
+      <div class="card-header-text">
+        <h2>Fairness, Ethics & Transparency</h2>
+        <p>DOMAIN 5 OF 7 — BIAS · DISPARATE IMPACT · CONTESTABILITY · EXPLAINABILITY</p>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Has the system been tested for bias across protected groups (gender, race, age, disability)?</label>
+        <div class="mcq-group" data-field="bias_testing">
+          <label class="mcq-option"><input type="radio" name="bias_testing" value="1"><div class="mcq-dot"></div>Comprehensive — demographic parity, equal opportunity, and disparate impact tested across all relevant groups</label>
+          <label class="mcq-option"><input type="radio" name="bias_testing" value="2"><div class="mcq-dot"></div>Partial — some protected groups tested; methodology documented</label>
+          <label class="mcq-option"><input type="radio" name="bias_testing" value="3"><div class="mcq-dot"></div>Limited — high-level fairness review only; no statistical bias testing</label>
+          <label class="mcq-option"><input type="radio" name="bias_testing" value="5"><div class="mcq-dot"></div>None — no bias or fairness testing conducted</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>How is transparency ensured for users and affected individuals?</label>
+        <div class="mcq-group" data-field="transparency">
+          <label class="mcq-option"><input type="radio" name="transparency" value="1"><div class="mcq-dot"></div>High — users notified AI is used; explanations provided; model card publicly available</label>
+          <label class="mcq-option"><input type="radio" name="transparency" value="2"><div class="mcq-dot"></div>Moderate — users notified of AI use; limited explanation of how decisions are made</label>
+          <label class="mcq-option"><input type="radio" name="transparency" value="3"><div class="mcq-dot"></div>Low — AI use disclosed in terms/policy but not prominently communicated</label>
+          <label class="mcq-option"><input type="radio" name="transparency" value="5"><div class="mcq-dot"></div>None — users are unaware that AI is making decisions that affect them</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Does the system include ethical review and responsible AI governance?</label>
+        <div class="mcq-group" data-field="ethical_review">
+          <label class="mcq-option"><input type="radio" name="ethical_review" value="1"><div class="mcq-dot"></div>Yes — formal AI Ethics Committee review; Responsible AI policy applied; documented</label>
+          <label class="mcq-option"><input type="radio" name="ethical_review" value="2"><div class="mcq-dot"></div>Partial — ethical considerations reviewed informally; no formal committee</label>
+          <label class="mcq-option"><input type="radio" name="ethical_review" value="4"><div class="mcq-dot"></div>Minimal — ethics mentioned in design docs but no formal review process</label>
+          <label class="mcq-option"><input type="radio" name="ethical_review" value="5"><div class="mcq-dot"></div>None — no ethical review or responsible AI framework applied</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Is there a harmful content or output risk for this system?</label>
+        <div class="mcq-group" data-field="harmful_output">
+          <label class="mcq-option"><input type="radio" name="harmful_output" value="1"><div class="mcq-dot"></div>No risk — system cannot generate harmful content; output is structured/constrained data</label>
+          <label class="mcq-option"><input type="radio" name="harmful_output" value="2"><div class="mcq-dot"></div>Low risk — minimal potential for harm; guardrails in place and tested</label>
+          <label class="mcq-option"><input type="radio" name="harmful_output" value="3"><div class="mcq-dot"></div>Medium — some potential; content filtering or output validation implemented</label>
+          <label class="mcq-option"><input type="radio" name="harmful_output" value="4"><div class="mcq-dot"></div>High — significant risk; partial safeguards only (e.g., generative AI with gaps)</label>
+          <label class="mcq-option"><input type="radio" name="harmful_output" value="5"><div class="mcq-dot"></div>Critical — high risk with no content moderation or output controls</label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-secondary" onclick="goToStep(4)">← Back</button>
+        <button class="btn btn-primary" onclick="goToStep(6)">Continue → GOVERNANCE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ STEP 6: COMPLIANCE & GOVERNANCE ══ -->
+  <div class="section-card" id="step-6">
+    <div class="card-header">
+      <div class="card-header-icon">📋</div>
+      <div class="card-header-text">
+        <h2>Compliance & Governance</h2>
+        <p>DOMAIN 6 OF 7 — REGULATORY MAPPING · DOCUMENTATION · APPROVALS · AUDIT TRAIL</p>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Which regulatory frameworks apply? (Select all that apply)</label>
+        <div class="checkbox-group" data-field="regulations">
+          <label class="check-option"><input type="checkbox" value="eu_ai_act"><div class="check-box"></div>EU AI Act — High-Risk or General Purpose AI provisions</label>
+          <label class="check-option"><input type="checkbox" value="gdpr"><div class="check-box"></div>GDPR / UK GDPR — data protection and automated decision-making (Art. 22)</label>
+          <label class="check-option"><input type="checkbox" value="nist"><div class="check-box"></div>NIST AI RMF — US AI Risk Management Framework</label>
+          <label class="check-option"><input type="checkbox" value="iso42001"><div class="check-box"></div>ISO/IEC 42001 — AI Management System Standard</label>
+          <label class="check-option"><input type="checkbox" value="finreg"><div class="check-box"></div>Financial Regulation — FCRA, ECOA, Basel/SR 11-7, FCA, MAS</label>
+          <label class="check-option"><input type="checkbox" value="hipaa"><div class="check-box"></div>Healthcare Regulation — HIPAA, MDR, FDA SaMD guidance</label>
+          <label class="check-option"><input type="checkbox" value="ccpa"><div class="check-box"></div>CCPA / US State Privacy Laws</label>
+          <label class="check-option"><input type="checkbox" value="none"><div class="check-box"></div>None identified / Not yet assessed</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>How complete is the compliance documentation?</label>
+        <div class="mcq-group" data-field="compliance_docs">
+          <label class="mcq-option"><input type="radio" name="compliance_docs" value="1"><div class="mcq-dot"></div>Complete — requirements mapped to controls; evidence pack with model cards, data sheets, approvals</label>
+          <label class="mcq-option"><input type="radio" name="compliance_docs" value="2"><div class="mcq-dot"></div>Mostly complete — major documents present; minor gaps in evidence freshness</label>
+          <label class="mcq-option"><input type="radio" name="compliance_docs" value="3"><div class="mcq-dot"></div>Partial — some documentation; requirement-to-control mapping incomplete</label>
+          <label class="mcq-option"><input type="radio" name="compliance_docs" value="4"><div class="mcq-dot"></div>Limited — minimal documentation; no formal compliance mapping</label>
+          <label class="mcq-option"><input type="radio" name="compliance_docs" value="5"><div class="mcq-dot"></div>None — no compliance documentation exists</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Is there a formal approval and sign-off process before deployment?</label>
+        <div class="mcq-group" data-field="approval_process">
+          <label class="mcq-option"><input type="radio" name="approval_process" value="1"><div class="mcq-dot"></div>Yes — multi-stakeholder approval (legal, risk, compliance, data, business) with documented sign-off</label>
+          <label class="mcq-option"><input type="radio" name="approval_process" value="2"><div class="mcq-dot"></div>Yes — approval process exists but not all relevant stakeholders are included</label>
+          <label class="mcq-option"><input type="radio" name="approval_process" value="3"><div class="mcq-dot"></div>Informal — approvals happen via email or verbal confirmation; not formally recorded</label>
+          <label class="mcq-option"><input type="radio" name="approval_process" value="5"><div class="mcq-dot"></div>None — no formal approval gate before AI system deployment</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Is third-party vendor AI risk managed?</label>
+        <div class="mcq-group" data-field="vendor_risk">
+          <label class="mcq-option"><input type="radio" name="vendor_risk" value="1"><div class="mcq-dot"></div>N/A — no third-party AI vendors or models used</label>
+          <label class="mcq-option"><input type="radio" name="vendor_risk" value="2"><div class="mcq-dot"></div>Yes — vendor AI risk assessments completed; contractual AI provisions in place</label>
+          <label class="mcq-option"><input type="radio" name="vendor_risk" value="3"><div class="mcq-dot"></div>Partial — some vendor reviews; no formal AI-specific contractual requirements</label>
+          <label class="mcq-option"><input type="radio" name="vendor_risk" value="5"><div class="mcq-dot"></div>No — third-party AI risks not assessed or managed</label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-secondary" onclick="goToStep(5)">← Back</button>
+        <button class="btn btn-primary" onclick="goToStep(7)">Continue → OPERATIONS</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ STEP 7: OPERATIONS & MONITORING ══ -->
+  <div class="section-card" id="step-7">
+    <div class="card-header">
+      <div class="card-header-icon">📊</div>
+      <div class="card-header-text">
+        <h2>Operations & Monitoring</h2>
+        <p>DOMAIN 7 OF 7 — INCIDENT RESPONSE · FALLBACK · RETRAINING · KPI TRACKING</p>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Is there a defined AI-specific incident response plan?</label>
+        <div class="mcq-group" data-field="incident_response">
+          <label class="mcq-option"><input type="radio" name="incident_response" value="1"><div class="mcq-dot"></div>Yes — AI incident response playbook with defined roles, escalation paths, and SLAs</label>
+          <label class="mcq-option"><input type="radio" name="incident_response" value="2"><div class="mcq-dot"></div>Partial — general IT incident response adapted for AI; no AI-specific playbook</label>
+          <label class="mcq-option"><input type="radio" name="incident_response" value="3"><div class="mcq-dot"></div>Limited — informal incident handling; no documented AI incident process</label>
+          <label class="mcq-option"><input type="radio" name="incident_response" value="5"><div class="mcq-dot"></div>None — no incident response process for AI failures</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Is there a fallback or fail-safe mechanism when the AI fails or underperforms?</label>
+        <div class="mcq-group" data-field="fallback">
+          <label class="mcq-option"><input type="radio" name="fallback" value="1"><div class="mcq-dot"></div>Yes — tested fallback to rule-based system or human review with automatic triggering</label>
+          <label class="mcq-option"><input type="radio" name="fallback" value="2"><div class="mcq-dot"></div>Yes — fallback exists but triggering is manual or not regularly tested</label>
+          <label class="mcq-option"><input type="radio" name="fallback" value="3"><div class="mcq-dot"></div>Partial — degraded service mode planned but not implemented</label>
+          <label class="mcq-option"><input type="radio" name="fallback" value="5"><div class="mcq-dot"></div>None — no fallback; AI failure causes full service outage</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Is there a governed retraining and model update process?</label>
+        <div class="mcq-group" data-field="retraining">
+          <label class="mcq-option"><input type="radio" name="retraining" value="1"><div class="mcq-dot"></div>Yes — defined triggers, approval gates, regression testing, and rollback on retraining</label>
+          <label class="mcq-option"><input type="radio" name="retraining" value="2"><div class="mcq-dot"></div>Yes — retraining process documented; limited regression testing coverage</label>
+          <label class="mcq-option"><input type="radio" name="retraining" value="3"><div class="mcq-dot"></div>Ad-hoc — retraining happens reactively without formal governance</label>
+          <label class="mcq-option"><input type="radio" name="retraining" value="5"><div class="mcq-dot"></div>None — no retraining process; model not updated after initial deployment</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Is real-time monitoring and alerting in place for the AI system?</label>
+        <div class="mcq-group" data-field="monitoring">
+          <label class="mcq-option"><input type="radio" name="monitoring" value="1"><div class="mcq-dot"></div>Yes — comprehensive monitoring covering performance, data, system health, and business KPIs</label>
+          <label class="mcq-option"><input type="radio" name="monitoring" value="2"><div class="mcq-dot"></div>Good — technical monitoring in place; limited business/model-specific KPI monitoring</label>
+          <label class="mcq-option"><input type="radio" name="monitoring" value="3"><div class="mcq-dot"></div>Basic — infrastructure monitoring only; no AI-specific metric tracking</label>
+          <label class="mcq-option"><input type="radio" name="monitoring" value="5"><div class="mcq-dot"></div>None — no monitoring or alerting in place</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Is there any additional context, known risks, or mitigating circumstances you want considered?</label>
+        <textarea id="additional_context" placeholder="e.g., 'We are in early pilot phase with only 500 users', 'This system is deployed in a highly regulated environment with existing controls', 'We have a dedicated AI governance team'…" style="min-height:100px;"></textarea>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-secondary" onclick="goToStep(6)">← Back</button>
+        <button class="btn btn-primary" id="run-assessment-btn" onclick="runAssessment()" style="background:var(--accent);font-size:0.85rem;padding:14px 36px;">
+          🚀 RUN AI ASSESSMENT
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ RESULTS SECTION ══ -->
+  <div id="results-section">
+    <div class="results-hero">
+      <div>
+        <div class="result-title-row">ASSESSMENT COMPLETE — ARIA EVALUATION REPORT</div>
+        <div class="result-app-name" id="res-app-name">—</div>
+        <div class="result-meta" id="res-meta">—</div>
+        <div style="margin-top:1rem;display:flex;gap:8px;flex-wrap:wrap;" id="res-tags"></div>
+      </div>
+      <div class="result-verdict" id="res-verdict">
+        <div class="verdict-label">OVERALL VERDICT</div>
+        <div class="verdict-text" id="res-verdict-text">—</div>
+      </div>
+    </div>
+
+    <!-- Score gauge -->
+    <div class="gauge-wrapper">
+      <svg class="gauge-svg" viewBox="0 0 200 110">
+        <defs>
+          <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#16a34a"/>
+            <stop offset="40%" style="stop-color:#d97706"/>
+            <stop offset="75%" style="stop-color:#dc2626"/>
+            <stop offset="100%" style="stop-color:#7c3aed"/>
+          </linearGradient>
+        </defs>
+        <path d="M 20 95 A 80 80 0 0 1 180 95" fill="none" stroke="#e5e7eb" stroke-width="12" stroke-linecap="round"/>
+        <path id="gauge-arc" d="M 20 95 A 80 80 0 0 1 180 95" fill="none" stroke="url(#gaugeGrad)" stroke-width="12" stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="251.3"/>
+        <text id="gauge-num" x="100" y="80" text-anchor="middle" font-family="Syne,sans-serif" font-size="32" font-weight="800" fill="#0a0a0f">0</text>
+        <text x="100" y="100" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#6b6b7a">RESIDUAL RISK SCORE</text>
+        <text x="22" y="108" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#16a34a">LOW</text>
+        <text x="178" y="108" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7c3aed">CRIT</text>
+      </svg>
+      <div class="gauge-info">
+        <h3>RESIDUAL RISK SCORE</h3>
+        <div class="gauge-score" id="gauge-score-display">—</div>
+        <div class="gauge-sublabel" id="gauge-risk-label">—</div>
+        <div class="risk-strip" style="margin-top:12px;width:220px;">
+          <div class="risk-seg seg-green" id="seg-0"></div>
+          <div class="risk-seg seg-amber" id="seg-1"></div>
+          <div class="risk-seg seg-red" id="seg-2"></div>
+          <div class="risk-seg seg-purple" id="seg-3"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.58rem;color:var(--muted);width:220px;margin-top:4px;">
+          <span>0</span><span>25</span><span>50</span><span>75</span><span>100</span>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:Syne,sans-serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--muted);margin-bottom:12px;">SCORING BREAKDOWN</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:0.75rem;" id="score-breakdown"></div>
+      </div>
+    </div>
+
+    <!-- Domain score dashboard -->
+    <div style="font-family:Syne,sans-serif;font-size:0.65rem;letter-spacing:0.2em;color:var(--muted);margin-bottom:8px;">DOMAIN RISK SCORES</div>
+    <div class="score-dashboard" id="domain-dashboard"></div>
+
+    <!-- Narrative -->
+    <div class="narrative-block" id="narrative-block">
+      <div class="narrative-label">◆ ARIA ASSESSMENT NARRATIVE</div>
+      <div class="narrative-text" id="narrative-text">Loading…</div>
+    </div>
+
+    <!-- Detail grid -->
+    <div class="detail-grid" id="detail-grid"></div>
+
+    <!-- Recommendations table -->
+    <div class="detail-card" style="margin-bottom:2rem;">
+      <div class="detail-card-header">📌 PRIORITY REMEDIATION ACTIONS</div>
+      <div class="detail-card-body" style="padding:0;">
+        <table class="rec-table">
+          <thead>
+            <tr>
+              <th>#</th><th>ACTION</th><th>DOMAIN</th><th>PRIORITY</th><th>TIMELINE</th>
+            </tr>
+          </thead>
+          <tbody id="rec-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Action bar -->
+    <div class="action-bar">
+      <div>
+        <div class="action-bar-text">Assessment Complete — Download Audit-Ready Report</div>
+        <div class="action-bar-sub">Comprehensive PDF report with all scores, findings, and recommendations for regulator submission</div>
+      </div>
+      <button class="btn btn-dark" onclick="downloadPDF()">⬇ DOWNLOAD PDF REPORT</button>
+      <button class="btn btn-secondary" onclick="resetAssessment()">↺ NEW ASSESSMENT</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div style="max-width:1200px;margin:0 auto;padding:1rem 2rem;border-top:1px solid var(--border);color:#6b6b7a;font-size:0.7rem;line-height:1.6;">
+    Disclaimer: This assessment is informational and for internal risk guidance only. It is not legal, regulatory, or compliance advice, and should be validated by appropriate domain experts before decisions or filings.
+    <br>© 2026 Prateek Dutta. All rights reserved.
+  </div>
+</footer>
+
+<!-- Analyzing overlay -->
+<div id="analyzing-screen">
+  <div class="analyze-spinner"></div>
+  <div class="analyze-text">ARIA is analyzing your system…</div>
+  <div class="analyze-sub">ARIA EVALUATION ENGINE</div>
+  <div class="analyze-steps" id="analyze-steps">
+    <div class="analyze-step" id="astep-0"><div class="step-dot"></div>Calculating inherent risk scores</div>
+    <div class="analyze-step" id="astep-1"><div class="step-dot"></div>Evaluating control effectiveness</div>
+    <div class="analyze-step" id="astep-2"><div class="step-dot"></div>Running domain-weighted aggregation</div>
+    <div class="analyze-step" id="astep-3"><div class="step-dot"></div>Generating compliance findings</div>
+    <div class="analyze-step" id="astep-4"><div class="step-dot"></div>Synthesizing assessment narrative</div>
+    <div class="analyze-step" id="astep-5"><div class="step-dot"></div>Building remediation recommendations</div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</script>
+</body>
+</html>
