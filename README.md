@@ -130,6 +130,19 @@ Update CSS variables in `:root` (light) and `[data-theme=dark]` (dark). Keep ade
 - Works on any static host (S3/CloudFront, GitHub Pages, Netlify, Vercel, Azure Static Web Apps).
 - Ensure `assets/` is published and relative paths remain intact.
 
+### GitHub Pages quick start
+1) Commit this repo with the following structure at the root:
+   - `index.html` (redirects to `ai-assessment-framework.html` so Pages serves the app)
+   - `ai-assessment-framework.html`
+   - `framework-overview.html`
+   - `assets/` (styles, js, favicon)
+2) In GitHub: Settings → Pages → Build and deployment:
+   - Source: “Deploy from a branch”
+   - Branch: `main` (or `master`) / Root (`/`)
+3) Wait for the Pages workflow to finish. Visit the given URL. If caching shows the README, hard refresh; Pages will serve `index.html`.
+
+Note: Pages serves `index.html` by default. Without it, GitHub shows `README.md`. The included `index.html` simply redirects to the main app HTML.
+
 ### Browser support
 - Modern Chromium, Firefox, Safari, and Edge. PDF rendering is via `jsPDF`.
 
