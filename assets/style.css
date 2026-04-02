@@ -811,7 +811,7 @@ input[type=range]::-webkit-slider-thumb {
 .detail-card.full { grid-column: 1 / -1; }
 
 @media (max-width: 768px) {
-  header { padding: 0 1rem; flex-wrap: wrap; }
+  header { padding: 0 1rem 8px; flex-wrap: wrap; }
   .logo { flex: 1 1 auto; min-width: 0; }
   .header-right { flex: 1 1 100%; justify-content: flex-end; gap:8px; margin-top: 6px; }
   .header-link, .theme-toggle, .header-badge { padding: 4px 8px; }
