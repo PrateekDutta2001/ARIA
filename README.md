@@ -1,6 +1,7 @@
 ## ARIA — AI Risk & Intelligence Assessment (Enterprise Grid)
 
-### What is ARIA?
+The **ARIA AI Risk Intelligence Assessment** is a structured framework designed to help organizations evaluate the **safety and compliance** of their artificial intelligence systems. It examines **eight distinct risk domains**, including data governance, security, and ethical fairness, to ensure models operate with **transparency and accountability**. By auditing specific controls like **human oversight** and **adversarial resilience**, the system generates a detailed profile of an application's potential impact. The process culminates in a **comprehensive risk report** that provides an overall verdict and prioritized actions for remediation. This tool serves as a vital bridge between **technical performance** and **regulatory requirements**, such as the EU AI Act or NIST standards. Ultimately, ARIA enables enterprises to identify and mitigate **critical vulnerabilities** before deploying AI technologies into production environments.
+
 ARIA is a browser‑based framework to assess AI systems across eight dimensions and generate an audit‑ready PDF report. It uses a structured, three‑layer scoring model: inherent risk, control effectiveness, and residual risk. The UI is single‑page, responsive, and works fully offline once loaded (except for optional AI summarization if you later connect an API).
 
 ### Key capabilities
